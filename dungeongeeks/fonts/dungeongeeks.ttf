@@ -1,0 +1,147 @@
+SplineFontDB: 3.0
+FontName: font3933
+FullName: font3933
+FamilyName: DungeonGeeks
+Weight: Regular
+ItalicAngle: 0
+UnderlinePosition: 0
+UnderlineWidth: 0
+Ascent: 819
+Descent: 205
+LayerCount: 2
+Layer: 0 0 "Back"  1
+Layer: 1 0 "Fore"  0
+XUID: [1021 994 917402445 15016952]
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 0
+CreationTime: 1376976687
+ModificationTime: 1376976687
+PfmFamily: 17
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 92
+VLineGap: 92
+OS2TypoAscent: 0
+OS2TypoAOffset: 1
+OS2TypoDescent: 0
+OS2TypoDOffset: 1
+OS2TypoLinegap: 92
+OS2WinAscent: 0
+OS2WinAOffset: 1
+OS2WinDescent: 0
+OS2WinDOffset: 1
+HheadAscent: 0
+HheadAOffset: 1
+HheadDescent: 0
+HheadDOffset: 1
+OS2Vendor: 'PfEd'
+DEI: 91125
+Encoding: Original
+UnicodeInterp: none
+NameList: Adobe Glyph List
+DisplaySize: -24
+AntiAlias: 1
+FitToEm: 1
+WinInfo: 0 28 9
+BeginChars: 4 4
+
+StartChar: .notdef
+Encoding: 0 0 0
+Width: 1024
+LayerCount: 2
+Fore
+SplineSet
+0 0 m 1
+ 1000 0 l 1
+ 1000 1024 l 1
+ 0 1024 l 1
+ 0 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: logo
+Encoding: 1 108 1
+Width: 1024
+LayerCount: 2
+Fore
+SplineSet
+214.545 794 m 1
+ 112.004 691.459 l 1
+ 226.141 577.322 l 1
+ 171.209 522.389 l 1
+ 266.425 428.393 l 1
+ 470.897 632.864 l 1
+ 376.29 727.471 l 1
+ 328.682 679.862 l 1
+ 214.545 794 l 1
+692.458 764.703 m 1
+ 562.451 633.475 l 1
+ 767.532 428.393 l 1
+ 897.54 559.011 l 1
+ 692.458 764.703 l 1
+548.413 620.047 m 1
+ 515.453 587.087 l 1
+ 483.714 619.436 l 1
+ 278.633 414.965 l 1
+ 310.371 382.616 l 1
+ 138.249 210.494 l 1
+ 138.269 85.7801 l 1
+ 181.955 73.403 209.846 45.123 218.826 5.1398 c 1
+ 343.34 4.8017 l 1
+ 515.462 177.534 l 1
+ 688.805 4.8017 l 1
+ 893.886 3.5811 l 1
+ 893.886 209.883 l 1
+ 720.544 382.616 l 1
+ 753.503 414.965 l 1
+ 548.413 620.047 l 1
+138.248 70.7522 m 1
+ 138.25 4.802 l 1
+ 203.944 4.899 l 1
+ 197.973 34.559 175.154 61.5942 138.248 70.7522 c 1
+EndSplineSet
+EndChar
+
+StartChar: search
+Encoding: 2 115 2
+Width: 1024
+LayerCount: 2
+Fore
+SplineSet
+401.375 782.438 m 0
+ 242.224 782.438 112.562 652.776 112.562 493.625 c 0
+ 112.562 334.474 242.224 204.812 401.375 204.812 c 0
+ 464.065 204.812 522.115 224.98 569.531 259.094 c 1
+ 823.031 5.625 l 1
+ 865.438 48.0625 l 1
+ 614.469 299 l 1
+ 661.449 350.392 690.188 418.738 690.188 493.625 c 0
+ 690.188 652.776 560.526 782.438 401.375 782.438 c 0
+401.375 722.438 m 0
+ 528.099 722.438 630.188 620.349 630.188 493.625 c 0
+ 630.188 366.901 528.099 264.812 401.375 264.812 c 0
+ 274.651 264.812 172.562 366.901 172.562 493.625 c 0
+ 172.562 620.349 274.651 722.438 401.375 722.438 c 0
+EndSplineSet
+EndChar
+
+StartChar: user
+Encoding: 3 117 3
+Width: 1024
+LayerCount: 2
+Fore
+SplineSet
+472.011 785.017 m 0
+ 240.724 791.316 211.29 441.955 374.029 329.399 c 1
+ 415.096 291.472 394.51 238.647 360.556 225.292 c 0
+ 215.471 168.228 44.2073 113.208 71.5079 -2.5166 c 1
+ 877.411 -2.5166 l 1
+ 904.712 113.208 733.448 168.228 588.363 225.292 c 0
+ 554.409 238.647 533.823 291.472 574.891 329.399 c 1
+ 737.629 441.955 697.404 798.061 476.908 785.017 c 0
+ 475.266 785.056 473.667 785.015 472.011 785.017 c 0
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

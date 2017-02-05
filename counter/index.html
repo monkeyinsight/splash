@@ -1,0 +1,518 @@
+<!doctype html>
+<html>
+<head>
+	<title>Counter</title>
+	<link rel="stylesheet" href="css/reveal.css">
+	<meta http-equiv="refresh" content="14400">
+	<style>
+		@font-face {
+			font-family: 'gothic';
+			src: url('img/gothic.eot');
+			src: local('gothic'), url('img/gothic.woff') format('woff'), url('img/gothic.ttf') format('truetype');
+		}
+		html, body {
+			margin: 0;
+			padding: 0;
+			color: #fff;
+			font-family: 'gothic', sans-serif;
+			text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+			-webkit-font-smoothing: antialiased;
+		}
+		body {
+			background: #806ec4 url('img/bg.png') no-repeat;
+		}
+		h1 {
+			line-height: 28px;
+			font-size: 32px;
+			font-weight: 100;
+			margin: 0;
+			font-family: 'gothic', sans-serif;
+		}
+		h1 img {
+			vertical-align: bottom;
+			margin-right: 30px;
+		}
+		.wrapper {
+			width: 1730px;
+			margin: 80px auto;
+			margin-bottom: 0;
+		}
+		#logo {
+			float: right;
+			background: url('img/logo.png');
+			width: 352px;
+			height: 57px;
+			margin-top: -57px;
+		}
+		.top {
+			background: url('img/top-bg.png');
+			width: 1770px;
+			height: 247px;
+			margin-top: 15px;
+			margin-left: -20px;
+			font-size: 22px;
+			line-height: 30px;
+			margin-bottom: 50px;
+		}
+		.top .left {
+			margin-left: 230px;
+			padding-top: 50px;
+			width: 465px;
+			text-transform: uppercase;
+		}
+		.top .right {
+			float: right;
+			margin-right: 200px;
+			padding-top: 50px;
+			width: 550px;
+			text-transform: uppercase;
+		}
+		.big-money {
+			font-size: 72px;
+			line-height: 100px;
+		}
+		.bottom {
+			background: url('img/bottom-bg.png') center center;
+			width: 100%;
+			height: 452px;
+			margin-top: 30px;
+			font-size: 24px;
+			line-height: 30px;
+		}
+		.bottom .wrapper {
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-top: 40px;
+		}
+		.column {
+			float: left;
+			width: 33%;
+		}
+		.row {
+			position: relative;
+			clear: both;
+			padding-bottom: 80px;
+		}
+		.row .c {
+			float: left;
+			width: 160px;
+		}
+		.row .c:first-child {
+			width: 200px;
+			padding-left: 40px;
+			background: url('img/bullet.png') no-repeat 10px 10px;
+		}
+		.row.heading {
+			padding-bottom: 0;
+		}
+		.heading .c {
+			background: none !important;
+			text-transform: uppercase;
+			padding-bottom: 10px;
+			font-size: 18px;
+		}
+		.separator {
+			position: absolute;
+			height: 82px;
+			left: 17px;
+			top: 25px;
+			border-left: 2px #fff solid;
+		}
+		#graph {
+			width: 100%;
+			height: 100%;
+		}
+		.blink {
+			transition: color 200ms ease;
+			color: yellow;
+		}
+		.axis path,
+		.axis line {
+			fill: none;
+			stroke: #000;
+			shape-rendering: crispEdges;
+		}
+		.x.axis path {
+			display: none;
+		}
+		.line {
+			fill: none;
+			stroke: white;
+			stroke-width: 1.5px;
+		}
+		.line2 {
+			fill: none;
+			stroke: yellow;
+			stroke-width: 1.5px;
+		}
+		div.tooltip {   
+			position: absolute;
+			text-align: center;
+			width: 150px;
+			height: 33px;
+			padding: 5px;
+			font: 12px sans-serif;
+			background: #fff;
+			color: #000;
+			border: 0px;      
+			border-radius: 8px;
+			pointer-events: none;
+			left: 80px;
+		}
+		circle {
+			opacity: 0;
+			fill: #fff;
+		}
+		circle:hover {
+			opacity: .5;
+		}
+	</style>
+	<script src="js/d3.min.js"></script>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<div class="wrapper">
+					<div id="logo"></div>
+					<h1><img src="img/graph.png">Savings Counter</h1>
+					<div class="top">
+						<div class="right">
+							On a total of:
+							<div class="big-money" id="total2">&euro;</div>
+							product value purchased
+						</div>
+						<div class="left">
+							Until today we help our costumers around the world to save:
+							<div class="big-money" id="total1">&euro;</div>
+						</div>
+					</div>
+					<h1><img src="img/people.png">On a Country Level</h1>
+				</div>
+				<div class="bottom">
+					<div class="wrapper">
+						<div class="column">
+							<div class="row heading">
+								<div class="c">&nbsp;</div>
+								<div class="c">Savings</div>
+								<div class="c">Total</div>
+							</div>
+							<div class="row" id="Austria">
+								<div class="c">Austria</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Brazil">
+								<div class="c">Brazil</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Finland">
+								<div class="c">Finland</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="France">
+								<div class="c">France</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Switzerland">
+								<div class="c">Switzerland</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+							</div>
+						</div>
+						<div class="column">
+							<div class="row heading">
+								<div class="c">&nbsp;</div>
+								<div class="c">Savings</div>
+								<div class="c">Total</div>
+							</div>
+							<div class="row" id="Germany">
+								<div class="c">Germany</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="India">
+								<div class="c">India</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Italy">
+								<div class="c">Italy</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Norway">
+								<div class="c" >Norway</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Australia">
+								<div class="c" >Australia</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+							</div>
+						</div>
+						<div class="column">
+							<div class="row heading">
+								<div class="c">&nbsp;</div>
+								<div class="c">Savings</div>
+								<div class="c">Total</div>
+							</div>
+							<div class="row" id="Poland">
+								<div class="c">Poland</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Russian">
+								<div class="c">Russia</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Spain">
+								<div class="c">Spain</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Sweden">
+								<div class="c">Sweden</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+								<div class="separator"></div>
+							</div>
+							<div class="row" id="Singapore">
+								<div class="c">Singapore</div>
+								<div class="c money">&euro;</div>
+								<div class="c money">&euro;</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div style="padding-top:50px;padding-left:70px">
+					<h1>Distribution of Savings and Total Value Purchased per week</h1>
+				</div>
+				<div id="graph"></div>
+			</section>
+		</div>
+	</div>
+	<script src="js/reveal.min.js"></script>
+	<script>
+		Reveal.initialize({
+			width: 1920,
+			height: 1080,
+			margin: 0,
+			minScale: 0.2,
+			loop: true,
+			keyboard: true,
+			controls: false,
+			progress: false,
+			history: false,
+			autoSlide: 60000,
+			embedded: false,
+			center: false
+		});
+	</script>
+	<script>
+		var margin = {top: 50, right: 20, bottom: 50, left: 150},
+		width = 1800 - margin.left - margin.right,
+		height = 900 - margin.top - margin.bottom;
+
+		var x = d3.time.scale().range([0, width]);
+		var y = d3.scale.linear().range([height, 0]);
+
+		var xAxis = d3.svg.axis()
+					.scale(x)
+					.orient("bottom");
+
+		var yAxis = d3.svg.axis()
+					.scale(y)
+					.orient("left");
+
+		var line1 = d3.svg.line()
+				.x(function(d) { return x(d.date); })
+				.y(function(d) { return y(d.Original); });
+
+		var line2 = d3.svg.line()
+				.x(function(d) { return x(d.date); })
+				.y(function(d) { return y(d.Saving); });
+
+		var svg = d3.select("#graph").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		var div = d3.select("#graph").append("div")   
+				.attr("class", "tooltip")               
+				.style("opacity", 0);
+
+		d3.json('http://api.bi.intvou.com/counterPerWeek.php', function(error, data) {
+			data = data.slice(0, -1);
+			data.forEach(function(d) {
+				var date = d.report_date.match(/^(.+?)_(.+?)$/);
+
+				d.date = new Date(+date[1], 0, (1 + (date[2] - 1) * 7));
+				d.Original = +d.Original;
+				d.Saving = +d.Saving;
+			});
+
+			x.domain(d3.extent(data, function(d) { return d.date; }));
+			y.domain([0, d3.max(data, function(d) { return Math.max(d.Original, d.Saving); })]);
+
+			svg.append("g")
+				.attr("class", "x axis")
+				.style("fill", "white")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+
+			svg.append("g")
+				.attr("class", "y axis")
+				.style("fill", "white")
+				.call(yAxis);
+
+			svg.append("path")
+				.attr("class", "line")
+				.attr("d", line1(data));
+
+			svg.append("path")
+				.attr("class", "line2")
+				.attr("d", line2(data));
+
+			svg.selectAll("dot")
+				.data(data)         
+				.enter().append("circle")                               
+				.attr("r", 5)       
+				.attr("cx", function(d) { return x(d.date); })       
+				.attr("cy", function(d) { return y(d.Original); })     
+				.on("mouseover", function(d) {      
+					div.transition()        
+					.duration(200)      
+					.style("opacity", .9);      
+					div .html("week: " + d.report_date + "<br/>"  + "saving: " + d.Original);
+				})                  
+				.on("mouseout", function(d) {       
+					div.transition()        
+					.duration(500)      
+					.style("opacity", 0);   
+				});
+
+			svg.selectAll("dot")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", 5)
+				.attr("cx", function(d) { return x(d.date); })
+				.attr("cy", function(d) { return y(d.Saving); })
+				.on("mouseover", function(d) {
+					div.transition()
+						.duration(200)
+						.style("opacity", .9);
+					div.html("week: " + d.report_date + "<br/>" + "saving: " + d.Saving);
+				})                  
+				.on("mouseout", function(d) {
+					div.transition()
+					.duration(500)
+					.style("opacity", 0);
+				});
+		});
+	</script>
+	<script>
+		var midnight = new Date()
+		midnight.setHours(8,0,0,0); // start date
+
+		var interval = 30; // should be not more then 30
+		var timing = 12; // working hours
+
+		function formatMoney(old, amount) {
+			var pos = 0;
+			var old1 = Math.round(old).toString().split('');
+			var amount1 = Math.round(amount).toString().split('');
+			for (i=old1.length-1; i>=0; i--) {
+				if (old1[i] != amount1[i])
+					pos = amount1.length - i;
+			}
+
+			var dollars = Math.round(amount).toString().split('');
+			var str = '';
+			for(i=dollars.length-1; i>=0; i--) {
+
+				if (i == pos - 1)
+					str += '<span class="blink">';
+				str += dollars.splice(0,1);
+				if (i%3 == 0 && i != 0) str += ',';
+			}
+			return '&euro;' + str + '</span>';
+		}
+
+		function getData(path, cb) {
+			var xmlhttp;
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var data = JSON.parse(xmlhttp.responseText);
+					cb(data);
+				}
+			}
+			xmlhttp.open("GET", path, true);
+			xmlhttp.send();
+		}
+
+		function update(div, lastValue, currentValue) {
+			var old;
+			if (typeof lastValue != 'undefined' && typeof currentValue != 'undefined') {
+				div.perMinute = (currentValue - lastValue) / (timing * 60);
+				div.minute = (new Date()).getMinutes();
+				div.lastValue = lastValue;
+				div.currentValue = (((new Date()).getTime() - midnight.getTime()) / 60000) * div.perMinute + lastValue;
+				old = div.currentValue;
+			} else {
+				old = div.currentValue;
+				if (div.minute != (new Date()).getMinutes()) {
+					div.minute = (new Date()).getMinutes();
+					var diff = (((new Date()).getTime() - midnight.getTime()) / 60000) * div.perMinute - div.currentValue;
+					if (diff > 0)
+						div.currentValue = (((new Date()).getTime() - midnight.getTime()) / 60000) * div.perMinute + div.lastValue;
+				} else {
+					var add = Math.round((div.perMinute / (60/interval)) * Math.random());
+					if (add < 1 && div.perMinute >= 1)
+						add = 1;
+					div.currentValue = div.currentValue + add;
+				}
+			}
+
+			div.innerHTML = formatMoney(old, div.currentValue);
+			if (old != div.currentValue)
+				setTimeout(function() { div.querySelector('.blink').className = ''}, 300);
+
+			setTimeout(function() { update(div) }, interval * 1000);
+			return;
+		}
+
+		getData('http://api.bi.intvou.com', function(data) {
+			for (var i in data) {
+				if (data[i].savings) {
+					var country = document.querySelectorAll('#' + i + ' .money');
+					update(country[0], data[i].savings.lastTotalValue, data[i].savings.currentTotalValue);
+					update(country[1], data[i].total.lastTotalValue, data[i].total.currentTotalValue);
+				} else
+					update(document.querySelector('#' + i), data[i].lastTotalValue, data[i].currentTotalValue);
+			}
+		});
+	</script>
+</body>
+</html>

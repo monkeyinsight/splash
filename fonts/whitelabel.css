@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'WhiteLabelRegular';
+    src: url('./whitelabel.eot');
+    src: url('./whitelabel.eot') format('embedded-opentype'),
+         url('./whitelabel.woff') format('woff'),
+         url('./whitelabel.ttf') format('truetype'),
+         url('./whitelabel.svg#WhiteLabelRegular') format('svg');
+}
+
+.icon {
+	font-family: 'WhiteLabelRegular';
+	font-size: 70px;
+}
+
+.icon-electronics:before {
+	content: '\0065';
+}
+
+.icon-accessories:before {
+	content: '\0061';
+}
+
+.icon-student:before {
+	content: '\0073';
+}
+
+.icon-home:before {
+	content: '\0068';
+}
+
+.icon-baby:before {
+	content: '\0062';
+}
+
+.icon-pets:before {
+	content: '\0070';
+}
+
+.icon-food:before {
+	content: '\0066';
+}
+
+.icon-book:before {
+	content: '\006B';
+}
+
+.icon-cosmetic:before {
+	content: '\0063';
+}
+
+.icon-dress:before {
+	content: '\0064';
+}
+
+.icon-travel:before {
+	content: '\0074';
+}
+
+.icon-sport:before {
+	content: '\0072';
+}
+
+.icon-presents:before {
+	content: '\006E';
+}

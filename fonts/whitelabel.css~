@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'WhiteLabelRegular';
+    src: url('./whitelabel.eot');
+    src: url('./whitelabel.eot') format('embedded-opentype'),
+         url('./whitelabel.woff') format('woff'),
+         url('./whitelabel.ttf') format('truetype'),
+         url('./whitelabel.svg#WhiteLabelRegular') format('svg');
+}
+
+.icon {
+	font-family: 'WhiteLabelRegular';
+	font-size: 150px;
+	color: green;
+}

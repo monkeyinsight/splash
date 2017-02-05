@@ -1,0 +1,23 @@
+@font-face{
+	font-family:'dungeongeeks';
+	src:url('../fonts/dungeongeeks.eot');
+	src:url('../fonts/dungeongeeks.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/dungeongeeks.woff') format('woff'),
+		url('../fonts/dungeongeeks.ttf') format('truetype'),
+		url('../fonts/dungeongeeks.svg#dungeongeeks') format('svg');
+}
+
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Roboto Condensed Regular'), local('RobotoCondensed-Regular'), url(http://themes.googleusercontent.com/static/fonts/robotocondensed/v8/Zd2E9abXLFGSr9G3YK2MsFzqCfRpIA3W6ypxnPISCPA.woff) format('woff');
+}
